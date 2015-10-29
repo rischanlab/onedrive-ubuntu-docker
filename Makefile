@@ -5,9 +5,9 @@ SHELL := /bin/bash
 # ----------------------------------------------------------------------------
 #    P R O D U C T I O N     C O M M A N D S
 # ----------------------------------------------------------------------------
-run: build 
+run: build permissions
 
-deploy: run
+deploy: run 
 	@echo
 	@echo "------------------------------------------------------------------"
 	@echo "Bringing up fresh instance "
@@ -20,19 +20,16 @@ build:
 	@echo "------------------------------------------------------------------"
 	@docker-compose -p $(PROJECT_ID) build data
 
-# permissions:
-# 	# Probably we want something more granular here....
-# 	# Your sudo password will be needed to set the file permissions
-# 	# on logs, media, static and pg dirs
-# 	@if [ ! -d "logs" ]; then mkdir logs; fi
-# 	@if [ ! -d "media" ]; then mkdir media; fi
-# 	@if [ ! -d "static" ]; then mkdir static; fi
-# 	@if [ ! -d "backups" ]; then mkdir backups; fi
-# 	@if [ -d "logs" ]; then sudo chmod -R a+rwx logs; fi
-# 	@if [ -d "media" ]; then sudo chmod -R a+rwx media; fi
-# 	@if [ -d "static" ]; then sudo chmod -R a+rwx static; fi
-# 	@if [ -d "pg" ]; then sudo chmod -R a+rwx pg; fi
-# 	@if [ -d "backups" ]; then sudo chmod -R a+rwx backups; fi
+permissions:
+	# Probably we want something more granular here....
+	# Your sudo password will be needed to set the file permissions
+	# on logs, media, static and pg dirs
+	@if [ ! -d "logs" ]; then mkdir logs; fi
+	@if [ ! -d "onedrive" ]; then mkdir onedrive; fi
+	@if [ ! -d "data" ]; then mkdir data; fi
+	@if [ -d "logs" ]; then sudo chmod -R a+rwx logs; fi
+	@if [ -d "onedrive" ]; then sudo chmod -R a+rwx onedrive; fi
+	@if [ -d "data" ]; then sudo chmod -R a+rwx data; fi
 
 up:
 	@echo
@@ -81,4 +78,4 @@ run_daemon:
 	@echo "------------------------------------------------------------------"
 	@echo "Running Onedrive daemon"
 	@echo "------------------------------------------------------------------"
-	@docker-compose -p $(PROJECT_ID) run data onedrive-d
+	@docker-compose -p $(PROJECT_ID) run data onedrive-d start
