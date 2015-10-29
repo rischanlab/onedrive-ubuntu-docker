@@ -1,0 +1,49 @@
+#
+# Production server with UWSGI configured to run on port 8080
+#
+# docker-compose build
+# docker-compose up -d web
+#
+# See accompanying Make commands for easy collectstatic etc.
+
+# Our main nginx service - this is for testing only - normally
+# You would use a standalone nginx instance running on the host!
+
+data:
+  # Note you cannot scale if you use conteiner_name
+  container_name: onedrive-data
+  build: docker
+  dockerfile: Dockerfile
+  environment:
+    - APP_CLIENT_ID=000000004010C916
+    - APP_CLIENT_SECRET=PimIrUibJfsKsMcd0SqwPBwMTV7NDgYi
+  hostname: onedrive
+  volumes:
+    #- ./onedrive:/onedrive 
+    - ./logs:/var/log/
+  ports:
+    # for ssh
+    - "6333:22"
+  restart: on-failure:5
+
+# dbbackups:
+#   # Note you cannot scale if you use conteiner_name
+#   container_name: projecta-db-backups
+#   image: kartoza/pg-backup:9.4
+#   hostname: pg-backups
+#   volumes:
+#     - ./backups:/backups
+#   links:
+#     - db:db
+#   environment:
+#     # take care to let the project name below match that
+#     # declared in the top of the makefile
+#     - DUMPPREFIX=PG_projecta
+#     # These are all defaults anyway, but setting explicitly in
+#     # case we ever want to ever use different credentials
+#     - PGUSER=docker
+#     - PGPASSWORD=docker
+#     - PGPORT=5432
+#     - PGHOST=db
+#     - PGDATABASE=gis
+#   restart: on-failure:5
