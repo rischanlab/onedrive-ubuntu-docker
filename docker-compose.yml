@@ -17,6 +17,9 @@ data:
   environment:
     - APP_CLIENT_ID=000000004010C916
     - APP_CLIENT_SECRET=PimIrUibJfsKsMcd0SqwPBwMTV7NDgYi
+    - LOGNAME=onedrive 
+    - USER=onedrive
+    - SUDO_USER=root
   hostname: onedrive
   volumes:
     #- ./onedrive:/onedrive 
