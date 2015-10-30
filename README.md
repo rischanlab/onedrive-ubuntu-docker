@@ -39,6 +39,13 @@ make configure
 Running the Onedrive daemon
 
 ```
-make run_daemon
+make startd
+
+```
+
+Checking the Onedrive daemon status
+
+```
+make statusd
 
 ```
