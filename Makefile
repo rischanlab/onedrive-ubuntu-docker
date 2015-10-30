@@ -73,9 +73,37 @@ configure:
 	@echo "------------------------------------------------------------------"
 	@docker-compose -p $(PROJECT_ID) run data onedrive-pref
 
-run_daemon:
+helpd:
+	@echo
+	@echo "------------------------------------------------------------------"
+	@echo "Running Onedrive daemon Help"
+	@echo "------------------------------------------------------------------"
+	@docker-compose -p $(PROJECT_ID) run data onedrive-d
+
+statusd:
+	@echo
+	@echo "------------------------------------------------------------------"
+	@echo "Knowing Onedrive daemon status"
+	@echo "------------------------------------------------------------------"
+	@docker-compose -p $(PROJECT_ID) run data onedrive-d status
+
+startd:
 	@echo
 	@echo "------------------------------------------------------------------"
 	@echo "Running Onedrive daemon"
 	@echo "------------------------------------------------------------------"
 	@docker-compose -p $(PROJECT_ID) run data onedrive-d start
+
+stopd:
+	@echo
+	@echo "------------------------------------------------------------------"
+	@echo "Stopping Onedrive daemon"
+	@echo "------------------------------------------------------------------"
+	@docker-compose -p $(PROJECT_ID) run data onedrive-d stop
+
+restartd:
+	@echo
+	@echo "------------------------------------------------------------------"
+	@echo "Restarting Onedrive daemon"
+	@echo "------------------------------------------------------------------"
+	@docker-compose -p $(PROJECT_ID) run data onedrive-d restart

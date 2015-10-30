@@ -35,4 +35,4 @@ RUN chown `whoami` /var/log/onedrive_d.log
 
 # Open port 22 as ssh port
 EXPOSE 22
-CMD ["onedrive-d", "status"]
+CMD ["onedrive-d", "start"]
