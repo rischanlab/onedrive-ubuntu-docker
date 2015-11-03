@@ -71,39 +71,39 @@ configure:
 	@echo "------------------------------------------------------------------"
 	@echo "Configure onedrive setting"
 	@echo "------------------------------------------------------------------"
-	@docker-compose -p $(PROJECT_ID) run data onedrive-pref
+	@docker exec -t -i $(PROJECT_ID)-data onedrive-pref
 
 helpd:
 	@echo
 	@echo "------------------------------------------------------------------"
 	@echo "Running Onedrive daemon Help"
 	@echo "------------------------------------------------------------------"
-	@docker-compose -p $(PROJECT_ID) run data onedrive-d
+	@docker exec -t -i $(PROJECT_ID)-data onedrive-d
 
 statusd:
 	@echo
 	@echo "------------------------------------------------------------------"
 	@echo "Knowing Onedrive daemon status"
 	@echo "------------------------------------------------------------------"
-	@docker-compose -p $(PROJECT_ID) run data onedrive-d status
+	@docker exec -t -i $(PROJECT_ID)-data onedrive-d status
 
 startd:
 	@echo
 	@echo "------------------------------------------------------------------"
 	@echo "Running Onedrive daemon"
 	@echo "------------------------------------------------------------------"
-	@docker-compose -p $(PROJECT_ID) run data onedrive-d start
+	@docker exec -t -i $(PROJECT_ID)-data onedrive-d start
 
 stopd:
 	@echo
 	@echo "------------------------------------------------------------------"
 	@echo "Stopping Onedrive daemon"
 	@echo "------------------------------------------------------------------"
-	@docker-compose -p $(PROJECT_ID) run data onedrive-d stop
+	@docker exec -t -i $(PROJECT_ID)-data onedrive-d stop
 
 restartd:
 	@echo
 	@echo "------------------------------------------------------------------"
 	@echo "Restarting Onedrive daemon"
 	@echo "------------------------------------------------------------------"
-	@docker-compose -p $(PROJECT_ID) run data onedrive-d restart
+	@docker exec -t -i $(PROJECT_ID)-data onedrive-d restart
