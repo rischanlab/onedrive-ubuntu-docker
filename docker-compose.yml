@@ -7,7 +7,7 @@
 data:
   # Note you cannot scale if you use conteiner_name
   container_name: onedrive-data
-  build: docker
+  build: .
   dockerfile: Dockerfile
   environment:
     - APP_CLIENT_ID=0000000040172910
