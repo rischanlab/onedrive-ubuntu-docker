@@ -56,10 +56,7 @@ RUN echo "export VISIBLE=now" >> /etc/profile
 # End of cut & paste section
 # ADD bashrc /root/.bashrc
 
-# --------------------------------------------------------
-# Open ports as needed
-# --------------------------------------------------------
-# Open port 22 as we will be using a remote interpreter from pycharm
+
 EXPOSE 22
 
 CMD ["/usr/sbin/sshd", "-D"]
