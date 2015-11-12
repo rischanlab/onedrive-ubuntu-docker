@@ -23,29 +23,13 @@ Deploying docker image.
 make deploy
 ```
 
-Accessing shell to the container
+### Setup OneDrive container
 
-```
-make shell
+After deploying with `make deploy` now you have onedrive image. To setup onedrive container follow these steps:
 
-```
-
-Setup Onedrive
-
-```
-make configure
-```
-
-Running the Onedrive daemon
-
-```
-make startd
-
-```
-
-Checking the Onedrive daemon status
-
-```
-make statusd
-
-```
+* Up onedrive container, use command `make onedrivedata `.
+* Setup onedrive account by using command `make onedrive_configure`. Then following the steps.
+* Start onedriave daemon by using command `make onedrive_startd`.
+* If you need to stop onedrive daemon you can use command `make onedrive_stopd` or if you need to restart the daemon
+you can use `make onedrive_restartd`.
+* To check onedrive daemon status, whether onedrive daemon running or not you can use command `make onedrive_statusd`.
