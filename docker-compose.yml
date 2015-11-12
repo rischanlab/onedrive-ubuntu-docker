@@ -4,26 +4,22 @@
 # docker-compose build
 
 
-data:
+onedrivedata:
   # Note you cannot scale if you use conteiner_name
-  container_name: onedrive-data
+  container_name: onedrive_data
   build: .
   dockerfile: Dockerfile
+  hostname: uwsgi
   environment:
     - APP_CLIENT_ID=0000000040172910
     - APP_CLIENT_SECRET=WAltBcwM9B3nlGDmplOUGfPLqsw5bHDA
-    - LOGNAME=onedrive 
+    - LOGNAME=onedrive
     - USER=onedrive
     - SUDO_USER=root
     - LC_ALL=C.UTF-8
     - LANG=C.UTF-8
-  hostname: onedrive
   volumes:
     - ./onedrive:~/.onedrive
-    - ./data:/root/OneDrive/  
+    - ./data:/root/OneDrive/
     - ./logs:/var/log/
-  ports:
-    # for ssh
-    - "6333:22"
-  restart: on-failure:5
 
