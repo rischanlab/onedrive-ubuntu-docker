@@ -78,39 +78,39 @@ onedrive_helpd:
 	@echo "------------------------------------------------------------------"
 	@echo "Running Onedrive daemon Help"
 	@echo "------------------------------------------------------------------"
-	@docker exec -t -i $(PROJECT_ID)_data onedrive-d
+	@docker exec -t -i $(PROJECT_ID)_onedrivedata onedrive-d
 
 onedrive_configure:
 	@echo
 	@echo "------------------------------------------------------------------"
 	@echo "Configure onedrive"
 	@echo "------------------------------------------------------------------"
-	@docker exec -t -i $(PROJECT_ID)_data onedrive-pref
+	@docker exec -t -i $(PROJECT_ID)_onedrivedata onedrive-pref
 
 onedrive_statusd:
 	@echo
 	@echo "------------------------------------------------------------------"
 	@echo "Knowing Onedrive daemon status"
 	@echo "------------------------------------------------------------------"
-	@docker exec -t -i $(PROJECT_ID)_data onedrive-d status
+	@docker exec -t -i $(PROJECT_ID)_onedrivedata onedrive-d status
 
 onedrive_startd:
 	@echo
 	@echo "------------------------------------------------------------------"
 	@echo "Running Onedrive daemon"
 	@echo "------------------------------------------------------------------"
-	@docker exec -t -i $(PROJECT_ID)_data onedrive-d start
+	@docker exec -t -i $(PROJECT_ID)_onedrivedata onedrive-d start
 
 onedrive_stopd:
 	@echo
 	@echo "------------------------------------------------------------------"
 	@echo "Stopping Onedrive daemon"
 	@echo "------------------------------------------------------------------"
-	@docker exec -t -i $(PROJECT_ID)_data onedrive-d stop
+	@docker exec -t -i $(PROJECT_ID)_onedrivedata onedrive-d stop
 
 onedrive_restartd:
 	@echo
 	@echo "------------------------------------------------------------------"
 	@echo "Restarting Onedrive daemon"
 	@echo "------------------------------------------------------------------"
-	@docker exec -t -i $(PROJECT_ID)_data onedrive-d restart
+	@docker exec -t -i $(PROJECT_ID)_onedrivedata onedrive-d restart
