@@ -41,3 +41,25 @@ RUN cp /onedrive/onedrive_d/res/default_ignore.ini ~/.onedrive/ignore_v2.ini
 
 RUN touch /var/log/onedrive_d.log
 RUN chown `whoami` /var/log/onedrive_d.log
+
+RUN apt-get update && apt-get install -y openssh-server sudo
+RUN mkdir /var/run/sshd
+RUN echo 'root:docker' | chpasswd
+RUN sed -i 's/PermitRootLogin without-password/PermitRootLogin yes/' /etc/ssh/sshd_config
+
+# SSH login fix. Otherwise user is kicked off after login
+RUN sed 's@session\s*required\s*pam_loginuid.so@session optional pam_loginuid.so@g' -i /etc/pam.d/sshd
+
+ENV NOTVISIBLE "in users profile"
+RUN echo "export VISIBLE=now" >> /etc/profile
+
+# End of cut & paste section
+# ADD bashrc /root/.bashrc
+
+# --------------------------------------------------------
+# Open ports as needed
+# --------------------------------------------------------
+# Open port 22 as we will be using a remote interpreter from pycharm
+EXPOSE 22
+
+CMD ["/usr/sbin/sshd", "-D"]
