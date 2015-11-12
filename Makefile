@@ -18,7 +18,7 @@ build:
 	@echo "------------------------------------------------------------------"
 	@echo "Building in production mode"
 	@echo "------------------------------------------------------------------"
-	@docker-compose -p $(PROJECT_ID) build data
+	@docker-compose -p $(PROJECT_ID) build
 
 permissions:
 	# Probably we want something more granular here....
