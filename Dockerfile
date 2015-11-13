@@ -42,4 +42,6 @@ RUN cp /onedrive/onedrive_d/res/default_ignore.ini ~/.onedrive/ignore_v2.ini
 RUN touch /var/log/onedrive_d.log
 RUN chown `whoami` /var/log/onedrive_d.log
 
-CMD ["onedrive-d", "start", "--debug"] 
+RUN onedrive-pref
+
+CMD ["onedrive-d", "start"] 
